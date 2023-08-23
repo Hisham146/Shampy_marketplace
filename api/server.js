@@ -26,14 +26,15 @@ const connect = async () => {
 };
 
 const corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:3001"],
+  origin: ["https://deploy-mern-1whq.vercel.app"],
+  methods: ["POST","GET"]
   credentials: true,
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-
+app.get("/",(req,res)) =>{res.json("Hello")};
 app.use("/api/auth", authRoute);
 app.use("/api/posts", adRoute);
 app.use("/api/service", serviceRoute);
