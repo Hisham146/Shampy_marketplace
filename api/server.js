@@ -26,7 +26,6 @@ const connect = async () => {
 };
 
 const corsOptions = {
-  origin: function (origin, callback) {
     const allowedOrigins = ["https://shampy-marketplace-ahg4.vercel.app", "https://shampy-marketplace-j1yf.vercel.app"],
     methods: ["POST", "GET"],
    credentials: true,
