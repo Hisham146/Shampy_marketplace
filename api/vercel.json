@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "./server.js",
+      "dest": "./api",
       "methods": ["GET", "POST", "PUT", "DELETE"],
       "headers": {
         "Access-Control-Allow-Origin": "https://shampy-marketplace-ahg4.vercel.app", 
