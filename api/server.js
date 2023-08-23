@@ -26,7 +26,7 @@ const connect = async () => {
 };
 
 const corsOptions = {
-  origin: ["https://deploy-mern-1whq.vercel.app"],
+  origin: ["https://shampy-marketplace-ahg4.vercel.app","https://shampy-marketplace-j1yf.vercel.app"],
   methods: ["POST","GET"]
   credentials: true,
 };
@@ -34,7 +34,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.get("/",(req,res)) =>{res.json("Hello")};
 app.use("/api/auth", authRoute);
 app.use("/api/posts", adRoute);
 app.use("/api/service", serviceRoute);
