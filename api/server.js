@@ -28,13 +28,14 @@ const connect = async () => {
 
 
 const corsOptions = {
-const allowedOrigins = [
-  "https://shampy-marketplace-ahg4.vercel.app",
-  "https://shampy-marketplace-j1yf.vercel.app"
-],
-  methods: ["POST", "GET", "DELETE", "FETCH"],
-  credentials: true,
-};
+     allowedOrigins : [
+    "https://shampy-marketplace-ahg4.vercel.app",
+    "https://shampy-marketplace-j1yf.vercel.app"
+  ],
+    methods: ["POST", "GET", "DELETE", "FETCH"],
+    credentials: true,
+  };
+  
 
 
 app.use(cors(corsOptions));
