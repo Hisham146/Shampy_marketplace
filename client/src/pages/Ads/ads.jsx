@@ -33,7 +33,7 @@ const Ads = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["ads"],
     queryFn: () =>
-      newRequest.get(`/posts?search=${input}&min=${minRef.current.value}&max=${maxRef.current.value}&vehiclemake=${vehicleMakeRef.current.value}&location=${cityRef.current.value}&vehiclemodel=${vehicleModelRef.current.value}`).then((res) => {
+      newRequest.get(`/api/posts?search=${input}&min=${minRef.current.value}&max=${maxRef.current.value}&vehiclemake=${vehicleMakeRef.current.value}&location=${cityRef.current.value}&vehiclemodel=${vehicleModelRef.current.value}`).then((res) => {
       return res.data;
         }),    
   });
