@@ -1,7 +1,7 @@
 {
   "version": 2,
   "routes": [
-    { "src": "/api/.*", "dest": "https://your-backend.vercel.app" }
+    { "src": "/api/.*", "dest": "https://shampy-marketplace.vercel.app" }
   ]
 }
 
