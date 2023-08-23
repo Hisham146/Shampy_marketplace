@@ -25,21 +25,15 @@ const connect = async () => {
   }
 };
 
+
+
+const corsOptions = {
 const allowedOrigins = [
   "https://shampy-marketplace-ahg4.vercel.app",
   "https://shampy-marketplace-j1yf.vercel.app"
-];
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["POST", "GET"],
-  credentials: true
+],
+  methods: ["POST", "GET", "DELETE", "FETCH"],
+  credentials: true,
 };
 
 
