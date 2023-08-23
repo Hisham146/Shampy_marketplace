@@ -27,7 +27,7 @@ const connect = async () => {
 
 const corsOptions = {
   origin: ["https://shampy-marketplace-ahg4.vercel.app","https://shampy-marketplace-j1yf.vercel.app"],
-  methods: ["POST","GET"]
+  methods: ["POST","GET"],
   credentials: true,
 };
 
