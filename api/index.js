@@ -29,7 +29,7 @@ const connect = async () => {
 const corsOptions = {
      allowedOrigins : [
     "http://localhost:3000",
-    "http://localhost:30001"
+    "http://localhost:3001"
   ],
     methods: ["POST", "GET", "DELETE", "FETCH"],
     credentials: true,
