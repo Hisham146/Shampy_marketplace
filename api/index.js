@@ -28,8 +28,6 @@ const connect = async () => {
 
 const corsOptions = {
      allowedOrigins : [
-    "https://shampy-marketplace-ahg4.vercel.app",
-    "https://shampy-marketplace-j1yf.vercel.app",
     "http://localhost:3000",
     "http://localhost:30001"
   ],
