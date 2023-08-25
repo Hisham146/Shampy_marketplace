@@ -49,14 +49,6 @@ export const UserProfile = () => {
             <Lottie animationData={animationData}></Lottie>
             </div>
             <h2>{userData?.firstname} {userData?.lastname}</h2>
-            <div className="mt-3">
-              <div className="mb-2">
-                <button className="btn btn-outline-primary">Share Profile</button>
-              </div>
-              <div className="mb-2">
-                <button className="btn btn-outline-danger">Report User</button>
-              </div>
-            </div>
           </div>
         </div>
         <div className="col-md-8  mb-5">
