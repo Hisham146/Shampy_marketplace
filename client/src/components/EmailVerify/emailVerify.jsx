@@ -30,7 +30,7 @@ const EmailVerify = () => {
 				<div className={styles.container}>
 					<img src="../../../success.png" alt="success_img" className={styles.success_img} />
 					<h1>Successfully Verified</h1>
-					<h3>Please Go Back and Sigin again..</h1>
+					<h3>Please Go Back and Sigin again..</h3>
 				</div>
 			
 		</Fragment>
