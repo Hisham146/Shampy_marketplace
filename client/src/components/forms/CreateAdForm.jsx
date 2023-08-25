@@ -231,7 +231,7 @@ export default function Createadform() {
       await newRequest.post('/posts', formData);
 
       const message = "*Your Ad is posted*";
-      const isConfirmed = window.confirm(message);
+      const isConfirmed = window.alert(message);
       if (isConfirmed) {
         navigate('/');
       } else {
