@@ -396,11 +396,9 @@ export default function Services() {
     </div>
   </div>
   <div className="col-12 pb-5 pt-3">
-  {!submitButtonDisabled ? (
-    <button className="btn btn-primary" type="submit" >Submit</button>
-    ) : (
-      null
-    )}
+  
+    <button className="btn btn-primary" type="submit" disabled={submitButtonDisabled} >Submit</button>
+
   </div>
   <label className='erros' style={{color:"red"}}>{error && error}</label> 
   </form>
