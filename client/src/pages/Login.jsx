@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animationData from '../assets/animation_ll3j6b3u.json';
 
-export default function Signin() {
+export default function Signin({onLogin}) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,7 +29,7 @@ export default function Signin() {
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("token", res.data.token);
-   
+      onLogin();
      
       const redirectPath = localStorage.getItem("redirectPath");
       if (redirectPath) {
