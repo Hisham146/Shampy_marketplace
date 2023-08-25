@@ -1,4 +1,3 @@
-
 import './App.css';
 import { BrowserRouter , Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home.jsx'
@@ -23,7 +22,7 @@ import User from './pages/User';
 import ChangePassword from './pages/ChangePassword';
 import PasswordReset from './components/PasswordReset/PasswordReset';
 import  UserProfile  from './pages/UserProfile';
-import { useState } from 'react';
+import getCurrentUser from './utils/getCurrentUser';
 import {
   QueryClient,
   QueryClientProvider,
@@ -43,31 +42,31 @@ function Layout({ children }) {
 }
 
 const App =()=> {
+  const currentUser = getCurrentUser();
 
-const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn")==="true")
   return (
     <BrowserRouter>
-    <Navbar isLoggedIn = {isLoggedIn} onLogout={() => setIsLoggedIn(false)}/>
+    <Navbar />
       <Routes>
         <Route path="/" element={<Layout><Home/></Layout>} />
-        <Route path="/signin" element={<Signin onLogin={() => setIsLoggedIn(true)} />}/>
+        <Route path="/signin" element={<Signin  />}/>
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/services" element={<Layout><Services /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/car-repair" element={<Layout><CarRepair /></Layout>} />
         <Route path="/car-inspect" element={<Layout><CarInspect /></Layout>} />
         <Route path="/forgetpass" element={<ForgetPass />} />
-        <Route path="/signin" element={isLoggedIn ? ( <Navigate to="/" />):(<Signin/>)} />
-        <Route path="/signup" element={isLoggedIn ? ( <Navigate to="/" /> ):(<Signup/>)} />
-        <Route path="/service-form" element={isLoggedIn ? (<Layout><ServicesForm /></Layout>) : (<Navigate to="/signin" />)} />
-        <Route path="/create-ad" element={isLoggedIn ? (<Layout><CreateAd/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/signin" element={currentUser ? ( <Navigate to="/" />):(<Signin/>)} />
+        <Route path="/signup" element={currentUser ? ( <Navigate to="/" /> ):(<Signup/>)} />
+        <Route path="/service-form" element={currentUser ? (<Layout><ServicesForm /></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/create-ad" element={currentUser ? (<Layout><CreateAd/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/ads" element={<Layout><DisplayAds/></Layout>} />
-        <Route path="/myads" element={isLoggedIn ? (<Layout><MyAds/></Layout>) : (<Navigate to="/signin" />)} />
-        <Route path="/edit-ad/:id" element={isLoggedIn ? (<Layout><EditAdForm/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/myads" element={currentUser ? (<Layout><MyAds/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/edit-ad/:id" element={currentUser ? (<Layout><EditAdForm/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/userprofile/:id" element={<Layout><UserProfile /></Layout>} />
         <Route path="/ad/:id" element={<Layout><Ad/></Layout>} />
         <Route path="/auth/:id/verify/:token" element={<EmailVerify/>} />
-        <Route path="/user" element={isLoggedIn ? (<Layout><User/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/user" element={currentUser ? (<Layout><User/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/changepass" element={<ChangePassword/>} />
         <Route path="/auth/:id/:token" element={<PasswordReset />} />
       </Routes>
