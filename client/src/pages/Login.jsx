@@ -7,7 +7,7 @@ import getCurrentUser from '../utils/getCurrentUser';
 import Lottie from 'lottie-react';
 import animationData from '../assets/animation_ll3j6b3u.json';
 
-export default function Signin() {
+export default function Signin({ onLogin }) {
 
   const currentuser = getCurrentUser();
   useEffect(() => {
@@ -29,6 +29,7 @@ export default function Signin() {
     try {
       const res = await newRequest.post("/auth/login", { email, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
+      localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("token", res.data.token);
   
      
