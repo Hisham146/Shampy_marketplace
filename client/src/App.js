@@ -47,9 +47,10 @@ const App =()=> {
 const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn")==="true")
   return (
     <BrowserRouter>
-    <Navbar isLoggedIn={isLoggedIn} onLogout={() => setIsLoggedIn(false)}/>
+    <Navbar isLoggedIn = {isLoggedIn} onLogout={() => setIsLoggedIn(false)}/>
       <Routes>
         <Route path="/" element={<Layout><Home/></Layout>} />
+        <Route path="/signin" element={<Signin onLogin={() => setIsLoggedIn(true)} />}/>
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/services" element={<Layout><Services /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
