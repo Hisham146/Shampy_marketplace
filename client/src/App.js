@@ -22,7 +22,9 @@ import User from './pages/User';
 import ChangePassword from './pages/ChangePassword';
 import PasswordReset from './components/PasswordReset/PasswordReset';
 import  UserProfile  from './pages/UserProfile';
+import NewUserOverlay from './components/NameOverlay/NewUserOverlay';
 import getCurrentUser from './utils/getCurrentUser';
+import { useEffect,useState } from 'react';
 import {
   QueryClient,
   QueryClientProvider,
@@ -43,10 +45,24 @@ function Layout({ children }) {
 
 const App =()=> {
   const currentUser = getCurrentUser();
+  const [showNewUserOverlay, setShowNewUserOverlay] = useState(false);
+
+  useEffect(() => {
+    const hasSeenOverlay = localStorage.getItem('hasSeenOverlay');
+    if (!hasSeenOverlay) {
+      setShowNewUserOverlay(true);
+      localStorage.setItem('hasSeenOverlay', 'true');
+    }
+  }, []);
+
+  const closeNewUserOverlay = () => {
+    setShowNewUserOverlay(false);
+  };
 
   return (
     <BrowserRouter>
     <Navbar />
+    {showNewUserOverlay ? ( <NewUserOverlay onClose={closeNewUserOverlay} />) : null}
       <Routes>
         <Route path="/" element={<Layout><Home/></Layout>} />
         <Route path="/signin" element={<Signin  />}/>
@@ -69,7 +85,9 @@ const App =()=> {
         <Route path="/user" element={currentUser ? (<Layout><User/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/changepass" element={<ChangePassword/>} />
         <Route path="/auth/:id/:token" element={<PasswordReset />} />
+        
       </Routes>
+      
     </BrowserRouter>
   );
 }
