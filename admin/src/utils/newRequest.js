@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-  baseURL: "http://localhost:8800/api/",
+  baseURL: "https://shampy-api.cyclic.cloud/api/",
   withCredentials: true,
 });
 
