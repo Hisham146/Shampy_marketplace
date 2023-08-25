@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 //import { Fragment } from "react/cjs/react.production.min";
 import { Fragment } from "react";
