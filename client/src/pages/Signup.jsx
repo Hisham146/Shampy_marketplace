@@ -8,7 +8,7 @@ import animationData from '../assets/animation_ll3i1pr7.json';
 
 export default function Signup(){
 
-
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);  
@@ -52,19 +52,20 @@ export default function Signup(){
 
   const handleSubmitValue = async (e) => {
     e.preventDefault();
-
+    setSubmitButtonDisabled(true);
     try {
       await newRequest.post("/auth/register", {
         ...user
       });
 
       const message = "Verification Email is sent on your email, Please Verify!";
-      const isConfirmed = window.confirm(message);
+      const isConfirmed = window.alert(message);
   
       if (isConfirmed) {
         navigate("/signin");
       }
     } catch (err) {
+      setSubmitButtonDisabled(false);
       setError(err.response.data);
     }
   };
@@ -215,7 +216,11 @@ export default function Signup(){
 
 
                   <div>
+                  {!submitButtonDisabled ? (
                   <button type="submit" className="input-button btn btn-primary btn-md btn-block mb-3">Sign up</button>
+                  ) : (
+                    null
+                  )}
                   </div>
                  <label className='erros' style={{color:"red"}}>{error && error}</label> 
 
