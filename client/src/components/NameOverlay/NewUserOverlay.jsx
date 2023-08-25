@@ -49,17 +49,17 @@ const NewUserOverlay = ({ onClose }) => {
         <h2 style={{ marginBottom: '0.5rem', fontWeight:'500' }}>Hisham Ahmed</h2>
         <p className='small-text' style={{color:'grey'}}>For web projects contact me on</p>
         <div className='links' style={{ display: 'flex', alignItems: 'center', justifyContent: "center" }}>
-            <a style={{ textDecoration: 'none', marginRight: '5px', letterSpacing: "1px", fontSize:'1.2rem' }} href='https://www.linkedin.com/in/hishamahmedx'>Linkedin</a>
+            <a style={{ textDecoration: 'none', marginRight: '5px', color:'#0A66C2', letterSpacing: "1px", fontSize:'1.2rem' }} href='https://www.linkedin.com/in/hishamahmedx'>Linkedin</a>
             <Lottie animationData={animationData} style={{ height: "30px", width: "30px", margin: "0" }} />
             </div>
 
         <div className='links' style={{ display: 'flex', alignItems: 'center', justifyContent:"center" }}>
-        <a style={{ textDecoration: 'none', marginRight: '5px', color:"purple", letterSpacing:"1px", fontSize:'1.2rem' }} href='www.instagram.com/hisham_ahmedx'>Instagram</a>
+        <a style={{ textDecoration: 'none', marginRight: '5px', color:"#E02683", letterSpacing:"1px", fontSize:'1.2rem' }} href='www.instagram.com/hisham_ahmedx'>Instagram</a>
         <Lottie animationData={animationDataInstagram} style={{ height: "30px", width: "30px", margin: "0" }} />
         </div>
 
         <div className='links' style={{ display: 'flex', alignItems: 'center', justifyContent:"center" }}>
-        <a style={{ textDecoration: 'none', marginRight: '5px', color:"blue", letterSpacing:"1px", fontSize:'1.2rem' }} href='https://t.me/hisham_ahmedx'>Telegram</a>
+        <a style={{ textDecoration: 'none', marginRight: '5px', color:'#1A94D7', letterSpacing:"1px", fontSize:'1.2rem' }} href='https://t.me/hisham_ahmedx'>Telegram</a>
         <Lottie animationData={animationDataTelegram} style={{ height: "30px", width: "30px", margin: "0"}} />
         </div>
 
