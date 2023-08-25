@@ -1,6 +1,6 @@
 
 import './App.css';
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter , Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home.jsx'
 import Services from './pages/Services.jsx';
 import CarInspect from './pages/CarInspection.jsx';
@@ -11,7 +11,6 @@ import Navbar from './components/navbar/Navbar.jsx'
 import Signup from './pages/Signup.jsx';
 import Signin from './pages/Login.jsx';
 import ServicesForm from './components/forms/ServicesForm.jsx'
-//import ContactForm from './components/forms/ContactForm.jsx'
 import Footer from './components/footer/Footer.jsx';
 import ForgetPass from './components/ForgetPassword/ForgetPass';
 import CreateAd from './pages/Ads/createAd';
@@ -24,6 +23,7 @@ import User from './pages/User';
 import ChangePassword from './pages/ChangePassword';
 import PasswordReset from './components/PasswordReset/PasswordReset';
 import  UserProfile  from './pages/UserProfile';
+import { useState } from 'react';
 import {
   QueryClient,
   QueryClientProvider,
@@ -43,9 +43,11 @@ function Layout({ children }) {
 }
 
 const App =()=> {
+
+const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn")==="true")
   return (
     <BrowserRouter>
-    <Navbar/>
+    <Navbar isLoggedIn={isLoggedIn} onLogout={() => setIsLoggedIn(false)}/>
       <Routes>
         <Route path="/" element={<Layout><Home/></Layout>} />
         <Route path="/about" element={<Layout><About /></Layout>} />
@@ -54,10 +56,10 @@ const App =()=> {
         <Route path="/car-repair" element={<Layout><CarRepair /></Layout>} />
         <Route path="/car-inspect" element={<Layout><CarInspect /></Layout>} />
         <Route path="/forgetpass" element={<ForgetPass />} />
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/signin" element={<Signin/>} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/service-form" element={<Layout><ServicesForm /></Layout>} />
-        <Route path="/create-ad" element={<Layout><CreateAd/></Layout>} />
+        <Route path="/service-form" element={isLoggedIn ? (<Layout><ServicesForm /></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/create-ad" element={isLoggedIn ? (<Layout><CreateAd/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/ads" element={<Layout><DisplayAds/></Layout>} />
         <Route path="/myads" element={<Layout><MyAds/></Layout>} />
         <Route path="/edit-ad/:id" element={<Layout><EditAdForm /></Layout>} />
