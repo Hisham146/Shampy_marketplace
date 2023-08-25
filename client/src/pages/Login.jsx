@@ -3,13 +3,11 @@ import newRequest from '../utils/newRequest'
 import { useFormik } from "formik";
 import { signInSchema } from "../schemas/index";
 import { NavLink, useNavigate } from 'react-router-dom';
-import getCurrentUser from '../utils/getCurrentUser';
 import Lottie from 'lottie-react';
 import animationData from '../assets/animation_ll3j6b3u.json';
 
-export default function Signin({ onLogin }) {
+export default function Signin() {
 
-  const currentuser = getCurrentUser();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);  
@@ -31,7 +29,7 @@ export default function Signin({ onLogin }) {
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("token", res.data.token);
-  
+   
      
       const redirectPath = localStorage.getItem("redirectPath");
       if (redirectPath) {
@@ -65,38 +63,7 @@ export default function Signin({ onLogin }) {
 console.log(errors);
   return (
     <div>
-       {currentuser ? (
-        <div className='button' style={{ display: "flex", justifyContent: "center", alignItems: "center", margin:"50% auto" }}>
-           <NavLink to="/" className="Home_button" style={{ textDecoration: 'none', color: 'inherit' }}>
-           <button
-             style={{
-               backgroundColor: '#a891b7',
-               color: 'white',
-               border: 'none',
-               padding: '0.2rem 1rem',
-               borderRadius: '5px',
-               cursor: 'pointer',
-               transition: 'all 0.3s',
-             }}
-             
-             onMouseEnter={(e) => {
-               e.target.style.backgroundColor = '#a891b7';
-               e.target.style.color = 'black';
-               e.target.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
-               e.target.style.transform = 'scale(1.05)';
-             }}
-             onMouseLeave={(e) => {
-               e.target.style.backgroundColor = '#a891b7';
-               e.target.style.color = 'white';
-               e.target.style.boxShadow = 'none';
-               e.target.style.transform = 'scale(1)';
-             }}
-           >
-             Go to Home
-           </button> 
-           </NavLink>
-           </div>
-          ) : (
+       
    <header >
       <div className="container py-4 ">
   
@@ -182,7 +149,7 @@ console.log(errors);
   </div>           
 </header>
 
-)}
+
     </div>
     
   )
