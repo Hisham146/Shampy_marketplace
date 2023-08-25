@@ -74,7 +74,7 @@ export default function Services() {
     ],
     
   };
-
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [error, setError] = useState(null);
   const [selectedMake, setSelectedMake] = useState("");
   const [service, setService] = useState({
@@ -119,11 +119,10 @@ export default function Services() {
 
     const handleSubmitValue = async (e) => {
       e.preventDefault();
-  
+      setSubmitButtonDisabled(true);
       try {
         await newRequest.post("/service/registerService", {
           ...service
-
         });
 
       } catch (err) {
@@ -136,12 +135,13 @@ export default function Services() {
 
          });
          const message = "Thank You. We'll reply you shortly.";
-         const isConfirmed = window.confirm(message);
+         const isConfirmed = window.alert(message);
      
          if (isConfirmed) {
            navigate("/");
          }
       }catch (err) {
+        setSubmitButtonDisabled(false);
         setError(err.response.data);
       };
 
@@ -396,10 +396,13 @@ export default function Services() {
     </div>
   </div>
   <div className="col-12 pb-5 pt-3">
+  {!submitButtonDisabled ? (
     <button className="btn btn-primary" type="submit" >Submit</button>
+    ) : (
+      null
+    )}
   </div>
   <label className='erros' style={{color:"red"}}>{error && error}</label> 
- 
   </form>
    </div>
    
