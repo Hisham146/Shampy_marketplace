@@ -140,11 +140,9 @@ console.log(errors);
           </div>
 
          
-         {!submitButtonDisabled ? (
-         <div> <button type="submit" className="btn btn-primary btn-md btn-block mb-3">Sign in</button></div>
-          ) : (
-            null
-          )}
+        
+         <div> <button type="submit" className="btn btn-primary btn-md btn-block mb-3" disabled={submitButtonDisabled} >Sign in</button></div>
+
           <label className='erros' style={{color:"red"}}>{error && error}</label> 
          
             <div className='singupbtn pr-5 mb-5'><NavLink  to="/Signup"  style={{ textDecoration: 'none' }}>New User? Sign Up</NavLink> </div>
