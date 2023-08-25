@@ -56,17 +56,17 @@ const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn")=
         <Route path="/car-repair" element={<Layout><CarRepair /></Layout>} />
         <Route path="/car-inspect" element={<Layout><CarInspect /></Layout>} />
         <Route path="/forgetpass" element={<ForgetPass />} />
-        <Route path="/signin" element={<Signin/>} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={isLoggedIn ? ( <Navigate to="/" />):(<Signin/>)} />
+        <Route path="/signup" element={isLoggedIn ? ( <Navigate to="/" /> ):(<Signup/>)} />
         <Route path="/service-form" element={isLoggedIn ? (<Layout><ServicesForm /></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/create-ad" element={isLoggedIn ? (<Layout><CreateAd/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/ads" element={<Layout><DisplayAds/></Layout>} />
-        <Route path="/myads" element={<Layout><MyAds/></Layout>} />
-        <Route path="/edit-ad/:id" element={<Layout><EditAdForm /></Layout>} />
+        <Route path="/myads" element={isLoggedIn ? (<Layout><MyAds/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/edit-ad/:id" element={isLoggedIn ? (<Layout><EditAdForm/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/userprofile/:id" element={<Layout><UserProfile /></Layout>} />
         <Route path="/ad/:id" element={<Layout><Ad/></Layout>} />
         <Route path="/auth/:id/verify/:token" element={<EmailVerify/>} />
-        <Route path="/user" element={<User/>} />
+        <Route path="/user" element={isLoggedIn ? (<Layout><User/></Layout>) : (<Navigate to="/signin" />)} />
         <Route path="/changepass" element={<ChangePassword/>} />
         <Route path="/auth/:id/:token" element={<PasswordReset />} />
       </Routes>
