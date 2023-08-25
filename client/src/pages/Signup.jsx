@@ -216,11 +216,9 @@ export default function Signup(){
 
 
                   <div>
-                  {!submitButtonDisabled ? (
-                  <button type="submit" className="input-button btn btn-primary btn-md btn-block mb-3">Sign up</button>
-                  ) : (
-                    null
-                  )}
+
+                  <button type="submit" className="input-button btn btn-primary btn-md btn-block mb-3" disabled={submitButtonDisabled} >Sign up</button>
+
                   </div>
                  <label className='erros' style={{color:"red"}}>{error && error}</label> 
 
