@@ -6,7 +6,7 @@ import Lottie from 'lottie-react';
 import animationData from '../../assets/animation_ll3k6l7n.json';
 import "./Navbar.css"
 
-export default function Navbar() {
+export default function Navbar({ isLoggedIn, onLogout }) {
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -16,6 +16,8 @@ export default function Navbar() {
     try {
       await newRequest.post("/auth/logout");
       localStorage.setItem("currentUser", null);
+      onLogout()
+      localStorage.removeItem("isLoggedIn");
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -40,14 +42,6 @@ export default function Navbar() {
     }
   };
 
-
-  const handleRedirectMessages = async () =>{
-    try{
-        navigate("/message")
-    }catch (err){
-      console.log(err);
-    }
-  };
   const handleRedirectMyProfile = async () =>{
     try{
         navigate("/user")
@@ -147,11 +141,6 @@ export default function Navbar() {
                       <Hoverbutton>New Ad</Hoverbutton>
                       </Link>
                       </li>
-                      <li>
-                      <Link className="dropdown-item nv"   style={{ textDecoration: 'none' }} to="/messages" onClick={handleRedirectMessages}>
-                      <Hoverbutton>Messages</Hoverbutton>
-                     </Link>
-                     </li>
                      <li>
                       <Link className="dropdown-item nv"   style={{ textDecoration: 'none' }} to="/user" onClick={handleRedirectMyProfile}>
                       <Hoverbutton>My Profile</Hoverbutton>
