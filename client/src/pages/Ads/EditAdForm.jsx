@@ -140,7 +140,7 @@ const EditAdForm = () => {
     e.preventDefault();
     try {
       // Send a PUT request to update the ad data
-      await newRequest.put(`/ads/${id}`, formData);
+      await newRequest.put(`/posts/${id}`, formData);
 
       const message = "*Your Ad is updated*";
       const isConfirmed = window.confirm(message);
