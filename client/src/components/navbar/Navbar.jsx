@@ -16,8 +16,9 @@ export default function Navbar({ onLogout }) {
     try {
       await newRequest.post("/auth/logout");
       onLogout()
-      localStorage.setItem("currentUser", null);
+      localStorage.removeItem("currentUser");
       localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("token");
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -184,6 +185,8 @@ export default function Navbar({ onLogout }) {
               </button>  </NavLink>
             </>
           )}
+              
+           
 
             </div>
 
