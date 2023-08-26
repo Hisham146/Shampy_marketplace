@@ -6,7 +6,7 @@ import Lottie from 'lottie-react';
 import animationData from '../../assets/animation_ll3k6l7n.json';
 import "./Navbar.css"
 
-export default function Navbar() {
+export default function Navbar({ onLogout }) {
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -15,8 +15,8 @@ export default function Navbar() {
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
+      onLogout()
       localStorage.setItem("currentUser", null);
-    
       localStorage.removeItem("isLoggedIn");
       navigate("/");
     } catch (err) {
@@ -184,7 +184,9 @@ export default function Navbar() {
               </button>  </NavLink>
             </>
           )}
-       </div>
+
+            </div>
+
           </div>
         </div>
       </nav>
