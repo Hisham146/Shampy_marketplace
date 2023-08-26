@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animationData from '../assets/animation_ll3j6b3u.json';
 
-export default function Signin() {
+export default function Signin({ onLogin }) {
 
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   useEffect(() => {
@@ -28,8 +28,9 @@ export default function Signin() {
     try {
       setSubmitButtonDisabled(true);
       const res = await newRequest.post("/auth/login", { email, password });
-      localStorage.setItem("currentUser", JSON.stringify(res.data));
       localStorage.setItem("isLoggedIn", "true");
+      onLogin();
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
       localStorage.setItem("token", res.data.token);
      
       const redirectPath = localStorage.getItem("redirectPath");
@@ -138,11 +139,11 @@ console.log(errors);
             </div>
             <NavLink  to="/ForgetPass"  style={{ textDecoration: 'none' }}>Forgot password?</NavLink>
           </div>
-
-         
-        
-         <div> <button type="submit" className="btn btn-primary btn-md btn-block mb-3" disabled={submitButtonDisabled} >Sign in</button></div>
-
+         {!submitButtonDisabled ? (
+         <div> <button type="submit" className="btn btn-primary btn-md btn-block mb-3">Sign in</button></div>
+          ) : (
+            null
+          )}
           <label className='erros' style={{color:"red"}}>{error && error}</label> 
          
             <div className='singupbtn pr-5 mb-5'><NavLink  to="/Signup"  style={{ textDecoration: 'none' }}>New User? Sign Up</NavLink> </div>
