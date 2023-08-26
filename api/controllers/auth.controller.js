@@ -166,7 +166,6 @@ export const login = async (req, res, next) => {
     // If the user is already verified, you can continue with the rest of your logic here.
     
 
-     if(user.verified === true){
     const token = jwt.sign(
       {
         id: user._id,
@@ -177,17 +176,10 @@ export const login = async (req, res, next) => {
         expiresIn: "1d", // Token will expire after one day
       }
     );
-  
+    
     const { password, ...info } = user._doc;
-    res
-      .cookie("accessToken", token, {
-        httpOnly: true,
-      })
-      .status(200)
-      .send(info);
-  
-    }
-
+    res.status(200).json({ token, info });
+    
   } catch (err) {
     next(err);
   }
@@ -258,9 +250,6 @@ try{
 		res.status(500).send( "Internal Server Error" );
 	}
 }
-
-
-
 
 export const logout = async (req, res) => {
   res.clearCookie("accessToken", {
