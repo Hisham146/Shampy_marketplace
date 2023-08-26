@@ -11,7 +11,7 @@ const EmailVerify = () => {
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
-				const url = `https://shampy-api.cyclic.cloud/api/auth/${param.id}/verify/${param.token}`;
+				const url = `https://shampy.cyclic.cloud/api/auth/${param.id}/verify/${param.token}`;
                 console.log(url);
 				 await newRequest.get(url);
 				
