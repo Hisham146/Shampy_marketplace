@@ -85,15 +85,15 @@ const App =()=> {
         <Route path="/forgetpass" element={<ForgetPass />} />
         <Route path="/signin" element={isLoggedIn ? ( <Navigate to="/" />):(<Signin/>)} />
         <Route path="/signup" element={isLoggedIn ? ( <Navigate to="/" /> ):(<Signup/>)} />
-        <Route path="/service-form" element={isLoggedIn ? (<Layout><ServicesForm /></Layout>) : (<Navigate to="/signin" />)} />
-        <Route path="/create-ad" element={isLoggedIn ? (<Layout><CreateAd/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/service-form" element={<Layout><ServicesForm /></Layout>} />
+        <Route path="/create-ad" element={<Layout><CreateAd/></Layout>} />
         <Route path="/ads" element={<Layout><DisplayAds/></Layout>} />
-        <Route path="/myads" element={isLoggedIn ? (<Layout><MyAds/></Layout>) : (<Navigate to="/signin" />)} />
-        <Route path="/edit-ad/:id" element={isLoggedIn ? (<Layout><EditAdForm/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/myads" element={<Layout><MyAds/></Layout>} />
+        <Route path="/edit-ad/:id" element={<Layout><EditAdForm/></Layout>} />
         <Route path="/userprofile/:id" element={<Layout><UserProfile /></Layout>} />
         <Route path="/ad/:id" element={<Layout><Ad/></Layout>} />
         <Route path="/auth/:id/verify/:token" element={<EmailVerify/>} />
-        <Route path="/user" element={isLoggedIn ? (<Layout><User/></Layout>) : (<Navigate to="/signin" />)} />
+        <Route path="/user" element={<Layout><User/></Layout>} />
         <Route path="/changepass" element={<ChangePassword/>} />
         <Route path="/auth/:id/:token" element={<PasswordReset />} />
         
