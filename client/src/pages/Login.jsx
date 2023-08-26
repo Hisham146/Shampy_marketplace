@@ -28,9 +28,9 @@ export default function Signin({ onLogin }) {
     try {
       setSubmitButtonDisabled(true);
       const res = await newRequest.post("/auth/login", { email, password });
+      localStorage.setItem("currentUser", JSON.stringify(res.data.info));
       localStorage.setItem("isLoggedIn", "true");
       onLogin();
-      localStorage.setItem("currentUser", JSON.stringify(res.data));
       localStorage.setItem("token", res.data.token);
      
       const redirectPath = localStorage.getItem("redirectPath");
