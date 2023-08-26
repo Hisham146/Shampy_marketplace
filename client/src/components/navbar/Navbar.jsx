@@ -185,9 +185,6 @@ export default function Navbar({ onLogout }) {
               </button>  </NavLink>
             </>
           )}
-              
-           
-
             </div>
 
           </div>
