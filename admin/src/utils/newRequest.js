@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-  baseURL: "https://shampy.cyclic.cloud/api/",
-  withCredentials: true,
+  baseURL: "https://shampyapi-production.up.railway.app/api/",
+  withCredentials: false,
 });
 
 export default newRequest;
