@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-  baseURL: "https://shampyapi-production.up.railway.app/api/",
+  baseURL: "https://shampyapi.onrender.com/api/",
   withCredentials: false,
 });
 
